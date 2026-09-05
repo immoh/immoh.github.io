@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Immo Heikkinen — links to LinkedIn, GitHub and Instagram.">
+    <meta name="color-scheme" content="light dark">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="preload" href="fonts/Inter-Regular.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="fonts/Inter-Medium.woff2" as="font" type="font/woff2" crossorigin>
+    <title>Immo Heikkinen</title>
+
+    <style>
+      @font-face {
+        font-family: "Inter";
+        src: url("fonts/Inter-Regular.woff2") format("woff2");
+        font-weight: 400;
+        font-style: normal;
+        font-display: swap;
+      }
+
+      @font-face {
+        font-family: "Inter";
+        src: url("fonts/Inter-Medium.woff2") format("woff2");
+        font-weight: 500;
+        font-style: normal;
+        font-display: swap;
+      }
+
+      :root {
+        color-scheme: light dark;
+        --background: #f3f1eb;
+        --text: #151515;
+        --muted: #74716b;
+        --line: #151515;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        background: var(--background);
+      }
+
+      body {
+        min-height: 100svh;
+        margin: 0;
+        color: var(--text);
+        background: var(--background);
+        font-family: "Inter", system-ui, sans-serif;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      main {
+        display: grid;
+        grid-template-columns: minmax(15rem, 20rem) minmax(17rem, 22rem);
+        align-items: center;
+        justify-content: center;
+        gap: clamp(2.25rem, 4vw, 3rem);
+        width: min(100% - 4rem, 52rem);
+        min-height: 100svh;
+        margin-inline: auto;
+        padding-block: 3rem;
+      }
+
+      .intro {
+        align-self: center;
+      }
+
+      h1 {
+        max-width: 8ch;
+        margin: 0 0 clamp(2.5rem, 6vh, 4rem);
+        font-size: clamp(3rem, 5.5vw, 5.25rem);
+        font-weight: 500;
+        line-height: 0.96;
+        letter-spacing: -0.02em;
+      }
+
+      nav {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.7rem;
+      }
+
+      a {
+        position: relative;
+        color: inherit;
+        font-size: clamp(1rem, 1.25vw, 1.15rem);
+        line-height: 1.45;
+        text-decoration: none;
+      }
+
+      a::after {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        height: 1px;
+        background: currentColor;
+        content: "";
+        transform: scaleX(0);
+        transform-origin: right;
+        transition: transform 180ms ease;
+      }
+
+      a:hover::after,
+      a:focus-visible::after {
+        transform: scaleX(1);
+        transform-origin: left;
+      }
+
+      a:focus-visible {
+        outline: 2px solid currentColor;
+        outline-offset: 5px;
+      }
+
+      .portrait-frame {
+        display: block;
+        width: 100%;
+      }
+
+      .portrait {
+        display: block;
+        width: 100%;
+        height: auto;
+        aspect-ratio: 3 / 4;
+        overflow: hidden;
+        background: #d9d5cc;
+        object-fit: cover;
+        object-position: center;
+      }
+
+      @media (max-width: 700px) {
+        main {
+          display: flex;
+          width: min(100% - 2.5rem, 28rem);
+          min-height: auto;
+          flex-direction: column;
+          align-items: stretch;
+          gap: 1.75rem;
+          padding-block: 2.5rem 3rem;
+        }
+
+        .intro {
+          display: contents;
+        }
+
+        h1 {
+          max-width: none;
+          margin: 0;
+          font-size: clamp(2.6rem, 12vw, 3.6rem);
+          line-height: 0.92;
+        }
+
+        .portrait-frame {
+          order: 2;
+          width: min(88%, 22rem);
+          align-self: flex-start;
+        }
+
+        nav {
+          order: 3;
+          gap: 0.65rem;
+        }
+
+        a {
+          font-size: 1.05rem;
+        }
+      }
+
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --background: #111110;
+          --text: #f0eee8;
+          --muted: #aaa69c;
+        }
+
+        .portrait {
+          background: #292825;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        a::after {
+          transition: none;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <main>
+      <section class="intro" aria-labelledby="name">
+        <h1 id="name">Immo Heikkinen</h1>
+
+        <nav aria-label="Social profiles">
+          <a href="https://www.linkedin.com/in/immoheikkinen/">LinkedIn</a>
+          <a href="https://github.com/immoh">GitHub</a>
+          <a href="https://www.instagram.com/immoh">Instagram</a>
+        </nav>
+      </section>
+
+      <picture class="portrait-frame">
+        <source srcset="immo-heikkinen.avif" type="image/avif">
+        <source srcset="immo-heikkinen.webp" type="image/webp">
+        <img
+          class="portrait"
+          src="immo-heikkinen.jpg"
+          width="800"
+          height="1067"
+          alt="Immo Heikkinen"
+          fetchpriority="high"
+        >
+      </picture>
+    </main>
+  </body>
+</html>
